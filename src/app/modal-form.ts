@@ -22,7 +22,7 @@ export class NgbdModalForm {
   closeResult: string;
 
   constructor(private modalService: NgbModal) {}
-
+  
   openBackDropCustomClass(content) {
     this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
   }
