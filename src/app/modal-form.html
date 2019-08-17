@@ -21,19 +21,23 @@
                 <input type="email" class="form-control" name="email" ngModel>
             </div>
 
-            <link href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css" rel="stylesheet" />
-            <div class="switch-toggle switch-3 switch-candy">
-                    <input id="on" name="state-d" type="radio" checked="" />
+
+            <div>
+                <label> Standard </label>
+                <link href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css" rel="stylesheet" />
+                <div class="switch-toggle switch-3 switch-candy">
+                    <input id="on" name="state-d" type="radio" name="standard" value="good" ngModel/>
                     <label for="on" onclick="">ON</label>
-                  
-                    <input id="na" name="state-d" type="radio"  />
+
+                    <input id="na" name="state-d" type="radio" name="standard" value="meh" ngModel/>
                     <label for="na" onclick=""> NA </label>
-                  
-                    <input id="off" name="state-d" type="radio" />
+
+                    <input id="off" name="state-d" type="radio" name="standard" value="bad" ngModel />
                     <label for="off" onclick="">OFF</label>
-                  
+
                     <a></a>
-                  </div>
+                </div>
+            </div>
 
             <button class="btn btn-primary" type="submit"> Submit </button>
 
