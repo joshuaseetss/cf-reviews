@@ -44,6 +44,10 @@ export class NgbdModalForm {
 
   closeResult: string;
 
+  submitted = false;
+
+  selectedIcon = false; 
+
   icons = [
     {
       iconName: 'happy',
@@ -80,6 +84,7 @@ export class NgbdModalForm {
 
     this.model.selectedIcon = selectedIcon;
     this.userModel.rating = selectedIcon.value;
+    this.selectedIcon = true; 
 
   }
 
@@ -92,7 +97,7 @@ export class NgbdModalForm {
     };
   }
 
-  submitted = false;
+  
 
   constructor(private modalService: NgbModal) { }
 
