@@ -16,16 +16,20 @@
                 <small class="text-danger" [class.d-none]="name.valid || name.untouched"> Name is required </small>
             </div>
 
+
             <!-- Rating input  -->
-            <div class="row custom-radio-buttons">
-                <div *ngFor="let iconObject of icons" class="col-4 text-center">
-                    <fa-icon [icon]="iconObject.icon"
-                        [ngClass]="[iconObject.iconName == model.selectedIcon.iconName ? 'selected' : '', iconObject.iconName]"
-                        (click)="selectIcon(iconObject)">
-                    </fa-icon>
-               
+            <div class="row custom-radio-buttons mb-1">
+                    <div 
+                        *ngFor="let iconObject of icons" 
+                        class="col-4 text-center"
+                        [ngClass]="[model.selectedIcon && iconObject.iconName == model.selectedIcon.iconName ? 'selected' : '', iconObject.iconName]">
+                        <fa-icon 
+                            [icon]="iconObject.icon" 
+                            (click)="selectIcon(iconObject)">
+                        </fa-icon>
+                        <div class="display-text">{{ iconObject.displayText }}</div>
+                    </div>
                 </div>
-            </div>
 
             <!-- Comment input  -->
             <div class="row">

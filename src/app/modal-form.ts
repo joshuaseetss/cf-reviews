@@ -4,7 +4,6 @@ import { faGrin } from '@fortawesome/free-regular-svg-icons';
 import { faMeh } from '@fortawesome/free-regular-svg-icons';
 import { faFrown } from '@fortawesome/free-regular-svg-icons';
 import { User } from './user';
-import { ReviewsService } from './reviews.service'
 
 
 @Component({
@@ -22,23 +21,27 @@ import { ReviewsService } from './reviews.service'
     .light-blue-backdrop {
       background-color: #5cb3fd;
     }
-    .custom-radio-buttons .ng-fa-icon {
+    .custom-radio-buttons > div {
       font-size: 50px;
       color: gray;
+      cursor: pointer;
     }
-    .custom-radio-buttons .ng-fa-icon.selected.happy {
+    .custom-radio-buttons > div.selected.happy {
       color: green;
     }
-    .custom-radio-buttons .ng-fa-icon.selected.meh {
+    .custom-radio-buttons > div.selected.meh {
       color: orange;
     }
-    .custom-radio-buttons .ng-fa-icon.selected.sad {
+    .custom-radio-buttons > div.selected.sad {
       color: red;
+    }
+    .custom-radio-buttons > div .display-text {
+      font-size: 1rem;
     }
   `]
 })
 export class NgbdModalForm {
-  
+
   closeResult: string;
 
   icons = [
@@ -46,19 +49,19 @@ export class NgbdModalForm {
       iconName: 'happy',
       icon: faGrin,
       value: 0,
-      text: "Good"
+      displayText: 'Good'
     },
     {
       iconName: 'meh',
       icon: faMeh,
       value: 1,
-      text: "OK"
+      displayText: 'OK'
     },
     {
       iconName: 'sad',
       icon: faFrown,
       value: 2,
-      text: "Bad"
+      displayText: 'Bad'
     }
   ];
 
@@ -66,7 +69,7 @@ export class NgbdModalForm {
     name: {
       value: ''
     },
-    selectedIcon: this.icons[0],
+    selectedIcon: null,
     comment: {
       maxLength: 300,
       value: ''
@@ -84,29 +87,24 @@ export class NgbdModalForm {
 
     return {
       name: this.model.name.value,
-      rating: this.model.selectedIcon.value,
+      rating: this.model.selectedIcon ? this.model.selectedIcon.value : -1,
       comment: this.model.comment.value
     };
   }
 
-  submitted = false; 
+  submitted = false;
 
-  constructor(private modalService: NgbModal, private _reviewsService: ReviewsService) {}
+  constructor(private modalService: NgbModal) { }
 
-  userModel = new User(this.model.name.value, this.model.selectedIcon.value, this.model.comment.value);
+  userModel = new User(this.model.name.value, null, this.model.comment.value);
 
   openBackDropCustomClass(content) {
-    this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
+    this.modalService.open(content, { backdropClass: 'light-blue-backdrop' });
   }
 
   onSubmit() {
 
-    this._reviewsService.review(this.userModel)
-      .subscribe(
-        data => console.log('Success!', data),
-        error => console.log('Error!', error)
-      )
-      this.submitted = true;
+    this.submitted = true;
 
   }
 }
