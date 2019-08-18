@@ -6,40 +6,45 @@
         </button>
     </div>
     <div class="modal-body">
-        <form #userForm="ngForm">
+        <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate>
 
-            {{ userForm.value | json }}
-
-
+            <!-- Name input  -->
             <div class="form-group">
                 <label> Name </label>
-                <input type="text" class="form-control" name="name" ngModel>
+                <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
+                    class="form-control" name="name" [(ngModel)]="userModel.name">
+                <small class="text-danger" [class.d-none]="name.valid || name.untouched"> Name is required </small>
             </div>
 
-            <div class="form-group">
-                <label> Email </label>
-                <input type="email" class="form-control" name="email" ngModel>
-            </div>
-
-
-            <div>
-                <label> Standard </label>
-                <link href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css" rel="stylesheet" />
-                <div class="switch-toggle switch-3 switch-candy">
-                    <input id="on" name="state-d" type="radio" name="standard" value="good" ngModel/>
-                    <label for="on" onclick="">ON</label>
-
-                    <input id="na" name="state-d" type="radio" name="standard" value="meh" ngModel/>
-                    <label for="na" onclick=""> NA </label>
-
-                    <input id="off" name="state-d" type="radio" name="standard" value="bad" ngModel />
-                    <label for="off" onclick="">OFF</label>
-
-                    <a></a>
+            <!-- Rating input  -->
+            <div class="row custom-radio-buttons">
+                <div *ngFor="let iconObject of icons" class="col-4 text-center">
+                    <fa-icon [icon]="iconObject.icon"
+                        [ngClass]="[iconObject.iconName == model.selectedIcon.iconName ? 'selected' : '', iconObject.iconName]"
+                        (click)="selectIcon(iconObject)">
+                    </fa-icon>
+               
                 </div>
             </div>
 
-            <button class="btn btn-primary" type="submit"> Submit </button>
+            <!-- Comment input  -->
+            <div class="row">
+                <div class="col-12">
+                    <textarea class="form-control" rows="3" maxlength="{{ model.comment.maxLength }}"
+                        [(ngModel)]="model.comment.value" name="comment" [(ngModel)]="userModel.comment"
+                        placeholder="Thank you for your participation! Remember to say thank you to your teachers if you liked them!"
+                        ></textarea>
+                    <div class="text-right">
+                        <span
+                            class="current-character-count">{{ model.comment.value ? model.comment.value.length : 0 }}</span>
+                        <span class="separator"> / </span>
+                        <span class="max-character-count">{{ model.comment.maxLength }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submission button  -->
+            <button [disabled]="userForm.form.invalid" class="btn btn-primary" type="submit"> Submit </button>
 
         </form>
     </div>
