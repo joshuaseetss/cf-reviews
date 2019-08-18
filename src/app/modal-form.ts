@@ -4,6 +4,7 @@ import { faGrin } from '@fortawesome/free-regular-svg-icons';
 import { faMeh } from '@fortawesome/free-regular-svg-icons';
 import { faFrown } from '@fortawesome/free-regular-svg-icons';
 import { User } from './user';
+import { ReviewService } from './review.service';
 
 
 @Component({
@@ -48,7 +49,7 @@ export class NgbdModalForm {
 
   selectedIcon = false;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private _reviewService: ReviewService) {}
 
   icons = [
     {
@@ -107,7 +108,13 @@ export class NgbdModalForm {
 
   onSubmit() {
 
-    this.submitted = true;
+    this._reviewService.review(this.userModel)
+        .subscribe(
+          data => console.log('Success!', data),
+          error => console.error('Error', error)
+        )
+
+        this.submitted = true;
 
   }
 }

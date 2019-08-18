@@ -24,8 +24,7 @@
             <div class="row custom-radio-buttons mb-1">
                 <div *ngFor="let iconObject of icons" class="col-4 text-center"
                     [ngClass]="[model.selectedIcon && iconObject.iconName == model.selectedIcon.iconName ? 'selected' : '', iconObject.iconName]"
-                    required #rating="ngModel" [class.is-invalid]="rating.invalid && rating.touched" name="rating"
-                    [(ngModel)]="userModel.rating">
+                    >
                     <fa-icon [icon]="iconObject.icon" (click)="selectIcon(iconObject)">
                     </fa-icon>
                     <div class="display-text">{{ iconObject.displayText }}</div>
