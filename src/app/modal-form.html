@@ -1,10 +1,13 @@
+<!-- Modal pop-up -->
 <ng-template #content let-modal>
+    <!-- Modal header  -->
     <div class="modal-header">
         <h4 class="modal-title">Overall Evaluation</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
+    <!-- Modal body  -->
     <div class="modal-body">
         <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate>
 
@@ -46,10 +49,12 @@
             </div>
 
             <!-- Submission button  -->
-            <button [disabled]="userForm.form.invalid || !selectedIcon" class="btn btn-primary" type="submit"> Submit </button>
+            <button [disabled]="userForm.form.invalid || !selectedIcon" class="btn btn-primary" type="submit"> Submit
+            </button>
 
         </form>
     </div>
+    <!-- Modal footer -->
     <div class="modal-footer">
         <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
     </div>

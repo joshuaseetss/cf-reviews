@@ -9,6 +9,6 @@ import { NgbdModalForm } from './modal-form';
 })
 export class AppComponent {
   title = 'createReview';
-  modalForm = NgbdModalForm; 
-  
+  modalForm = NgbdModalForm;
+
 }

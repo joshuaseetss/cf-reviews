@@ -46,7 +46,9 @@ export class NgbdModalForm {
 
   submitted = false;
 
-  selectedIcon = false; 
+  selectedIcon = false;
+
+  constructor(private modalService: NgbModal) { }
 
   icons = [
     {
@@ -84,7 +86,7 @@ export class NgbdModalForm {
 
     this.model.selectedIcon = selectedIcon;
     this.userModel.rating = selectedIcon.value;
-    this.selectedIcon = true; 
+    this.selectedIcon = true;
 
   }
 
@@ -96,10 +98,6 @@ export class NgbdModalForm {
       comment: this.model.comment.value
     };
   }
-
-  
-
-  constructor(private modalService: NgbModal) { }
 
   userModel = new User(this.model.name.value, null, this.model.comment.value);
 
