@@ -100,6 +100,7 @@ export class NgbdModalForm {
     };
   }
 
+  //creating user object after initalising them with the values. 
   userModel = new User(this.model.name.value, null, this.model.comment.value);
 
   openBackDropCustomClass(content) {
@@ -109,12 +110,12 @@ export class NgbdModalForm {
   onSubmit() {
 
     this._reviewService.review(this.userModel)
-        .subscribe(
-          data => console.log('Success!', data),
-          error => console.error('Error', error)
-        )
-
-        this.submitted = true;
-
+      .subscribe(
+        data => console.log('Success!', data),
+        error => console.log('Error!', error)
+      )
+      this.submitted = true;
   }
+
+
 }
