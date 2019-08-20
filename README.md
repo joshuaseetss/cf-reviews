@@ -33,9 +33,8 @@ form
 a. Name
 b. Good / OK / Bad
 c. Review message
-3) User can view a list of reviews submitted
-4. User can view an up-to-date pie chart of count of good / OK / bad reviews on the homepage
-5. User can click on a button that allows him to see all the messages left for the teacher.
+3) User can click on "View all reviews" button to view a list of reviews submitted, together with an up-to-date pie chart of count of good / OK / bad reviews
 
 ## Points to note 
 1) Reviews cannot be submitted if name and the rating is not submitted. Comments can be left blank. 
+2) The data is being stored in a browser. Open in another browser to reset the data. 
