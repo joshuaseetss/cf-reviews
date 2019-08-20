@@ -1,20 +1,2 @@
 <!-- receiving the review event from onSubmit() function in the modal form  -->
 <ngbd-modal-form (reviewEvent)="receivePostedReview($event)"></ngbd-modal-form>
-
-<div class="container" *ngIf="reviews && reviews.length">
-    <div class="text-center mt-3">
-        <h4>Percentage of reviews by review rating</h4>
-    </div>
-    <div class="row mt-3">
-        <div class="col-md-6 offset-md-3">
-            <canvas 
-                ngChartjs 
-                [data]="reviewsPieChartData" 
-                [labels]="reviewsPieChartLabels" 
-                [options]="reviewsPieChartOptions"
-                [colors]="reviewsPieChartColors"
-                [legend]="reviewsPieChartLegend"
-                [chartType]="reviewChartType"></canvas>
-        </div>
-    </div>
-</div>

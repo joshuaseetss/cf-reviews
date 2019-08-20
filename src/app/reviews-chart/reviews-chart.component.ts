@@ -10,6 +10,8 @@ export class ReviewsChartComponent implements OnInit {
   constructor() { }
 
   reviews: Array<object> = [];
+  
+  //chart.js properties 
   reviewsPieChartLabels: Array<string> = [
     "Good",
     "Ok",
@@ -42,26 +44,18 @@ export class ReviewsChartComponent implements OnInit {
 
   ngOnInit() {
     let storedReviews = localStorage.getItem('reviews');
+
     if (storedReviews) {
+      //adding the stored reviews from the browser into the reviews array, if there are any 
       this.reviews = JSON.parse(storedReviews);
-      this.updateChart();
     }
   }
 
-  updateChart() {
-    this.reviewsPieChartData = this.reviewsPieChartData.map((value, index) => {
-      let percentage = ((this.reviews.filter(review => review['rating'] === index).length / this.reviews.length) * 100);
-      let percentageString = percentage.toFixed(0);
-      percentage = parseInt(percentageString, 10);
-      return percentage;
-    });
-  }
-
+  // receiving the review event from onSubmit() function in the modal form 
   receivePostedReview(review) {
     //push combines 2 arrays 
     this.reviews.push(review);
     //putting the review in the browser storage 
     localStorage.setItem('reviews', JSON.stringify(this.reviews));
-    this.updateChart();
   }
 }
