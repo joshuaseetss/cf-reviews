@@ -29,8 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Features 
 1) User can click ‘Create review’ button, which would display a modal with a review
 form
-2) User can fill in and submit the form with the following fields (similar to the image
-above):
+2) User can fill in and submit the form with the following fields:
 a. Name
 b. Good / OK / Bad
 c. Review message
