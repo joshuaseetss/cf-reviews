@@ -79,7 +79,7 @@ export class NgbdModalForm {
     },
     selectedIcon: null,
     comment: {
-      maxLength: 300,
+      maxLength: 200,
       value: ''
     }
   };
