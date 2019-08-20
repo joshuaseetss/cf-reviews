@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Features 
+1) User can click ‘Create review’ button, which would display a modal with a review
+form
+2) User can fill in and submit the form with the following fields (similar to the image
+above):
+a. Name
+b. Good / OK / Bad
+c. Review message
+3) User can view a list of reviews submitted
+4. User can view an up-to-date pie chart of count of good / OK / bad reviews on the homepage
+5. User can click on a button that allows him to see all the messages left for the teacher.
+
+## Points to note 
+1) Reviews cannot be submitted if name and the rating is not submitted. Comments can be left blank. 
