@@ -8,18 +8,21 @@
         </button>
     </div>
 
-   
+
     <!-- Modal body  -->
     <div class="modal-body">
         <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-                {{ userForm.value | json }}
-                <br /> 
-                {{ getModel() | json }}
+            
+            <!-- the chunk below is for testing purposes  -->
+            <!-- {{ userForm.value | json }}
+            <br />
+            {{ getModel() | json }} -->
+
             <!-- Name input  -->
             <div class="form-group">
                 <label> Name </label>
                 <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
-                [(ngModel)]="model.name.value" class="form-control" name="name" [(ngModel)]="userModel.name">
+                    [(ngModel)]="model.name.value" class="form-control" name="name" [(ngModel)]="userModel.name">
                 <small class="text-danger" [class.d-none]="name.valid "> Name is required </small>
             </div>
 
@@ -27,8 +30,7 @@
             <!-- Rating input  -->
             <div class="row custom-radio-buttons mb-1 ml-0 mr-0">
                 <div *ngFor="let iconObject of icons" class="col-4 text-center"
-                    [ngClass]="[model.selectedIcon && iconObject.iconName == model.selectedIcon.iconName ? 'selected' : '', iconObject.iconName]"
-                    >
+                    [ngClass]="[model.selectedIcon && iconObject.iconName == model.selectedIcon.iconName ? 'selected' : '', iconObject.iconName]">
                     <fa-icon [icon]="iconObject.icon" (click)="selectIcon(iconObject)">
                     </fa-icon>
                     <div class="display-text">{{ iconObject.displayText }}</div>

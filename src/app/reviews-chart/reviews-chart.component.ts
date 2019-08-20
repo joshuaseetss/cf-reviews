@@ -58,7 +58,9 @@ export class ReviewsChartComponent implements OnInit {
   }
 
   receivePostedReview(review) {
+    //push combines 2 arrays 
     this.reviews.push(review);
+    //putting the review in the browser storage 
     localStorage.setItem('reviews', JSON.stringify(this.reviews));
     this.updateChart();
   }

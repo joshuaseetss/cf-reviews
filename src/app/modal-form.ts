@@ -3,8 +3,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { faGrin } from '@fortawesome/free-regular-svg-icons';
 import { faMeh } from '@fortawesome/free-regular-svg-icons';
 import { faFrown } from '@fortawesome/free-regular-svg-icons';
-import { User } from './user';
-import { ReviewService } from './review.service';
 
 
 @Component({
@@ -42,15 +40,17 @@ import { ReviewService } from './review.service';
   `]
 })
 export class NgbdModalForm {
-  @Output() reviewEvent = new EventEmitter<object>();
 
+  @Output() reviewEvent = new EventEmitter<object>();
+  //this tag binds the modal component file
+  
   closeResult: string;
 
   submitted = false;
 
   selectedIcon = false;
 
-  constructor(private modalService: NgbModal, private _reviewService: ReviewService) {}
+  constructor(private modalService: NgbModal) { }
 
   icons = [
     {
@@ -84,13 +84,14 @@ export class NgbdModalForm {
     }
   };
 
+  //smiley face, meh face or the sad face. converting them into values
   selectIcon(selectedIcon) {
     this.model.selectedIcon = selectedIcon;
-    this.userModel.rating = selectedIcon.value;
     this.selectedIcon = true;
 
   }
 
+  //retrieve the values of the form
   getModel() {
     return {
       name: this.model.name.value,
@@ -99,6 +100,7 @@ export class NgbdModalForm {
     };
   }
 
+  //after submission, we want the form to reset back to no values for next person to fill up 
   resetModel() {
     this.model.name.value = '';
     this.model.selectedIcon = null;
@@ -106,14 +108,12 @@ export class NgbdModalForm {
     this.model.comment.value = '';
   }
 
-  //creating user object after initalising them with the values. 
-  userModel = new User(this.model.name.value, null, this.model.comment.value);
-
   openBackDropCustomClass(content) {
     this.modalService.open(content, { backdropClass: 'light-blue-backdrop' });
   }
 
   onSubmit() {
+    //emits an event that is caught by review chart component to add review in review list and update chart
     this.reviewEvent.emit(this.getModel());
     this.resetModel();
   }

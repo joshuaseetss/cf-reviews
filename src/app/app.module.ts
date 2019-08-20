@@ -28,7 +28,7 @@ import { ReviewsListComponent } from './reviews-list/reviews-list.component';
     NgbModule, //bootstrap for the modal 
     FormsModule,
     HttpClientModule,
-    NgChartjsModule.registerPlugin([])
+    NgChartjsModule.registerPlugin([]) //this is for the chart.js visuals
   ],
   providers: [],
   bootstrap: [AppComponent]

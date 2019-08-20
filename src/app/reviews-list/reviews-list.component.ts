@@ -12,6 +12,7 @@ export class ReviewsListComponent implements OnInit {
   reviews: Array<object> = [];
 
   ngOnInit() {
+    //receive the data from browser storage and parse them
     let storedReviews = localStorage.getItem('reviews');
     if (storedReviews) {
       this.reviews = JSON.parse(storedReviews);

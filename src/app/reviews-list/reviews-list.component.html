@@ -1,9 +1,12 @@
 <div class="container">
     <div class="text-center mt-3" *ngIf="!reviews || !reviews.length">
+        <!-- if there are no reviews  -->
         <h4>No reviews posted yet</h4>
     </div>
     <div class="mt-3" *ngIf="reviews && reviews.length">
+        <!-- if there are reviews -->
         <h4>Total Reviews ({{ reviews.length }})</h4>
+        <!-- review colors in the list based on whether it is good, ok or bad -->
         <div class="alert" 
             *ngFor="let review of reviews; let i = index"
             [class.mt-3]="i == 0"
