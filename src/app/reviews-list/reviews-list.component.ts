@@ -10,6 +10,8 @@ export class ReviewsListComponent implements OnInit {
   constructor() { }
 
   reviews: Array<object> = [];
+
+  //chart.js properties 
   reviewsPieChartLabels: Array<string> = [
     "Good",
     "Ok",
@@ -49,6 +51,7 @@ export class ReviewsListComponent implements OnInit {
       this.updateChart();
     }
   }
+
   updateChart() {
     this.reviewsPieChartData = this.reviewsPieChartData.map((value, index) => {
       let percentage = ((this.reviews.filter(review => review['rating'] === index).length / this.reviews.length) * 100);

@@ -43,7 +43,7 @@ export class NgbdModalForm {
 
   @Output() reviewEvent = new EventEmitter<object>();
   //this tag binds the modal component file
-  
+
   closeResult: string;
 
   submitted = false;

@@ -12,8 +12,8 @@
     <!-- Modal body  -->
     <div class="modal-body">
         <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-            
-            <!-- the chunk below is for testing purposes  -->
+
+            <!-- the chunk below is for testing purposes- to ensure that the fields of the forms are being recorded down  -->
             <!-- {{ userForm.value | json }}
             <br />
             {{ getModel() | json }} -->
@@ -65,6 +65,7 @@
     </div>
 </ng-template>
 
+<!-- The create button  -->
 <div class="text-center">
     <button class="btn btn-outline-primary mt-2" (click)="openBackDropCustomClass(content)">Create Review</button>
 </div>

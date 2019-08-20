@@ -10,7 +10,7 @@ export class ReviewsChartComponent implements OnInit {
   constructor() { }
 
   reviews: Array<object> = [];
-  
+
   //chart.js properties 
   reviewsPieChartLabels: Array<string> = [
     "Good",
