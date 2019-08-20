@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label> Name </label>
                 <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
-                    [(ngModel)]="model.name.value" class="form-control" name="name" [(ngModel)]="userModel.name">
+                    [(ngModel)]="model.name.value" class="form-control" name="name" >
                 <small class="text-danger" [class.d-none]="name.valid "> Name is required </small>
             </div>
 
@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-12">
                     <textarea class="form-control" rows="3" maxlength="{{ model.comment.maxLength }}"
-                        [(ngModel)]="model.comment.value" name="comment" [(ngModel)]="userModel.comment"
+                        [(ngModel)]="model.comment.value" name="comment" 
                         placeholder="Thank you for your participation! Remember to say thank you to your teachers if you liked them!"></textarea>
                     <div class="text-right">
                         <span
