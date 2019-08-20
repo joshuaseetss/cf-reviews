@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { faGrin } from '@fortawesome/free-regular-svg-icons';
 import { faMeh } from '@fortawesome/free-regular-svg-icons';
@@ -42,6 +42,7 @@ import { ReviewService } from './review.service';
   `]
 })
 export class NgbdModalForm {
+  @Output() reviewEvent = new EventEmitter<object>();
 
   closeResult: string;
 
@@ -84,7 +85,6 @@ export class NgbdModalForm {
   };
 
   selectIcon(selectedIcon) {
-
     this.model.selectedIcon = selectedIcon;
     this.userModel.rating = selectedIcon.value;
     this.selectedIcon = true;
@@ -92,12 +92,18 @@ export class NgbdModalForm {
   }
 
   getModel() {
-
     return {
       name: this.model.name.value,
       rating: this.model.selectedIcon ? this.model.selectedIcon.value : -1,
       comment: this.model.comment.value
     };
+  }
+
+  resetModel() {
+    this.model.name.value = '';
+    this.model.selectedIcon = null;
+    this.selectedIcon = false;
+    this.model.comment.value = '';
   }
 
   //creating user object after initalising them with the values. 
@@ -108,14 +114,7 @@ export class NgbdModalForm {
   }
 
   onSubmit() {
-
-    this._reviewService.review(this.userModel)
-      .subscribe(
-        data => console.log('Success!', data),
-        error => console.log('Error!', error)
-      )
-      this.submitted = true;
+    this.reviewEvent.emit(this.getModel());
+    this.resetModel();
   }
-
-
 }
